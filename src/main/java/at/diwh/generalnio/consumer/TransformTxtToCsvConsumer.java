@@ -10,7 +10,7 @@ import java.util.function.Consumer;
  * Original zeigt die Zeile, in der <i>record(s) selected.</i> steht, das Ende des Blocks und eine Zeile, die mit ---
  * beginnt zeigt den Anfang des Blocks an, der in CVS verwandelt werden soll.
  * 
- * @author 246J
+ * @author diwh
  * @param <T> - Generic
  */
 public class TransformTxtToCsvConsumer<T> implements Consumer<T> {

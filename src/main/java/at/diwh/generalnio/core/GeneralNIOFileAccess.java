@@ -25,7 +25,7 @@ import java.util.stream.Stream;
 /**
  * Dies ist ein Versuch, eine generelle File-Access-Klasse zu bauen; 
  * inspieriert durch FileAccessWithNIO 
- * @author 246J
+ * @author diwh
  *
  */
 public class GeneralNIOFileAccess {

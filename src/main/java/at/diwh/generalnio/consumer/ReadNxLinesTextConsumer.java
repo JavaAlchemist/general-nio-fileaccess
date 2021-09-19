@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 /**
  * 
- * @author 246J
+ * @author diwh
  *
  * @param <T> - Generic
  */
