@@ -37,7 +37,7 @@ public class DemoGeneralNIOFileAccess {
         // klassische Filesystemangabe
         String tempDirName = System.getenv("TEMP");
         if (tempDirName == null) {
-        	tempDirName= System.getProperty("user.home");
+        	tempDirName= System.getProperty("user.home") + "/temp";
         }
             
         System.out.println("Ich verwende das Temporärverzueichnis: " + tempDirName);
@@ -188,7 +188,7 @@ public class DemoGeneralNIOFileAccess {
         // Sample für das Suchen nach spezifischen Files
         System.out.println("(Filesuche 'enthält')" + LINIE);
         List<String> dateinamen = new ArrayList<>();
-        elementName = System.getenv("TEMP");
+        elementName = tempDirName;
         String sucheNach = "1_3";
         System.out.println("Quellverezeichnis: " + elementName);
 
@@ -203,7 +203,7 @@ public class DemoGeneralNIOFileAccess {
         // Sample für das Suchen nach spezifischen Files
         System.out.println("(Filesuche 'endet mit')" + LINIE);
         dateinamen = new ArrayList<>();
-        elementName = System.getenv("TEMP");
+        elementName = tempDirName;
         sucheNach = ".exe";
         System.out.println("Quellverezeichnis: " + elementName);
 
@@ -218,7 +218,7 @@ public class DemoGeneralNIOFileAccess {
         // Sample für das Suchen nach spezifischen Verzeichnissen
         System.out.println("(Verzeichnissuche 'enthält')" + LINIE);
         dateinamen = new ArrayList<>();
-        elementName = System.getenv("TEMP");
+        elementName = tempDirName;
         sucheNach = "fake";
         System.out.println("Quellverezeichnis: " + elementName);
 
@@ -234,7 +234,7 @@ public class DemoGeneralNIOFileAccess {
         // Sample für den TransformTxtToCsvConsumer
         System.out.println("Sample für den TransformTxtToCsvConsumer" + LINIE);
         String ZEILENUMBRUCH = System.lineSeparator();
-        String TEMPDIR = System.getenv("TEMP");
+        String TEMPDIR = tempDirName;
         String inFileName = "/testdata/demo.txt";
         String outFileName = TEMPDIR + "/demo.csv";
  
