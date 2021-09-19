@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.function.Consumer;
 
 import at.diwh.generalnio.consumer.FullBinaryReadConsumer;
@@ -35,6 +36,10 @@ public class DemoGeneralNIOFileAccess {
 
         // klassische Filesystemangabe
         String tempDirName = System.getenv("TEMP");
+        if (tempDirName == null) {
+        	tempDirName= System.getProperty("user.home");
+        }
+            
         System.out.println("Ich verwende das Temporärverzueichnis: " + tempDirName);
         String fileLocation = tempDirName + "/irgendeinfile.txt";
         String fileToWriteLocation = tempDirName +"/out.txt";
