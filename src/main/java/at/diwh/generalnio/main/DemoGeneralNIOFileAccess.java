@@ -168,7 +168,7 @@ public class DemoGeneralNIOFileAccess {
         System.out.println("(Verzeichnisbaum)" + LINIE);
         List<Path> dateien = new ArrayList<>();
         List<Path> verzeichnisse = new ArrayList<>();
-        String elementName = System.getenv("TEMP");
+        String elementName = tempDirName;
         System.out.println("Quellverezeichnis: " + elementName);
         dateien = GeneralNIOFileAccess.holeDateibaum(elementName, verzeichnisse);
         System.out.println("Verzeichnisse Anzahl Elemente: " + verzeichnisse.size());
