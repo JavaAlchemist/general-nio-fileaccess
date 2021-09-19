@@ -54,7 +54,6 @@ public class DemoGeneralNIOFileAccess {
             public Integer getZaehler() {
                 return zaehler;
             }
-
             public void setZaehler(Integer zaehler) {
                 this.zaehler = zaehler;
             }
