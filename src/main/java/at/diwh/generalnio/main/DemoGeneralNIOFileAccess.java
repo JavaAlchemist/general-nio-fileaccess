@@ -1,13 +1,11 @@
 package at.diwh.generalnio.main;
 
-import java.awt.desktop.SystemSleepEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.function.Consumer;
 
 import at.diwh.generalnio.consumer.FullBinaryReadConsumer;
