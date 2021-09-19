@@ -1,5 +1,6 @@
 package at.diwh.generalnio.main;
 
+import java.awt.desktop.SystemSleepEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
@@ -11,12 +12,13 @@ import java.util.function.Consumer;
 import at.diwh.generalnio.consumer.FullBinaryReadConsumer;
 import at.diwh.generalnio.consumer.FullTextualReadConsumer;
 import at.diwh.generalnio.consumer.ReadNxLinesTextConsumer;
+import at.diwh.generalnio.consumer.TransformTxtToCsvConsumer;
 import at.diwh.generalnio.core.GeneralNIOFileAccess;
 
 /**
  * Dies ist ein Versuch, eine generelle File-Access-Klasse zu bauen; 
  * inspieriert durch FileAccessWithNIO 
- * @author 246J
+ * @author diwh
  *
  */
 public class DemoGeneralNIOFileAccess {
@@ -32,8 +34,10 @@ public class DemoGeneralNIOFileAccess {
         String LINIE = "-------------------------------------------------------------------------------------------------------------------------";
 
         // klassische Filesystemangabe
-        String fileLocation = "d:/WorkD/SVB Schulungen/Diverses/xml.txt";
-        String fileToWriteLocation = "d:/WorkD/SVB Schulungen/Diverses/out.txt";
+        String tempDirName = System.getenv("TEMP");
+        System.out.println("Ich verwende das Temporärverzueichnis: " + tempDirName);
+        String fileLocation = tempDirName + "/irgendeinfile.txt";
+        String fileToWriteLocation = tempDirName +"/out.txt";
 
         // src/conf ist ein Resource-Ordner; damit ist /testdata der erste Ordner unter diesem "Resource-Root"
         String classpathLocation = "/testdata/irgendeinfile.txt";
@@ -222,6 +226,28 @@ public class DemoGeneralNIOFileAccess {
             System.out.println("[" + element + "]");
         }
         System.out.println();
+        
+        // Sample für den TransformTxtToCsvConsumer
+        System.out.println("Sample für den TransformTxtToCsvConsumer" + LINIE);
+        String ZEILENUMBRUCH = System.lineSeparator();
+        String TEMPDIR = System.getenv("TEMP");
+        String inFileName = "/testdata/demo.txt";
+        String outFileName = TEMPDIR + "/demo.csv";
+ 
+        TransformTxtToCsvConsumer<String> consumer = new TransformTxtToCsvConsumer<>();
+        GeneralNIOFileAccess.leseFile(inFileName, DemoGeneralNIOFileAccess.class, StandardCharsets.ISO_8859_1, 1,
+            consumer);
+        StringBuilder sb = new StringBuilder();
+        for (String element : consumer.getData()) {
+            // System.out.println("Zeile: " + element);
+            if (!(element.replace(";", "").trim().isEmpty())) {
+                sb.append(element);
+                sb.append(ZEILENUMBRUCH);
+            }
+        }
+        System.out.println(sb.toString());
+        System.out.println("\nSchreibe Datei " + outFileName);
+        GeneralNIOFileAccess.schreibeFile(outFileName, sb.toString(), Boolean.FALSE, StandardCharsets.ISO_8859_1);
 
     }
 }
